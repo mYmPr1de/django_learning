@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <form method="post" class="form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" value="{{ form.username.value|default:'' }}">
+            {% if form.username.errors %}
+                <div class="text-danger">
+                    {{ form.username.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.name }}" value="{{ form.first_name.value|default:'' }}">
+            {% if form.first_name.errors %}
+                <div class="text-danger">
+                    {{ form.first_name.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.name }}" value="{{ form.last_name.value|default:'' }}">
+            {% if form.last_name.errors %}
+                <div class="text-danger">
+                    {{ form.last_name.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" value="{{ form.email.value|default:'' }}">
+            {% if form.email.errors %}
+                <div class="text-danger">
+                    {{ form.email.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.position.id_for_label }}">Position:</label>
+            <select class="form-control" id="{{ form.position.id_for_label }}" name="{{ form.position.name }}">
+                {% for choice in form.position.field.choices %}
+                    <option value="{{ choice.0 }}" {% if form.position.value == choice.0 %} selected {% endif %}>
+                        {{ choice.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+            {% if form.position.errors %}
+                <div class="text-danger">
+                    {{ form.position.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

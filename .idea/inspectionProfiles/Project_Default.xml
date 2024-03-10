@@ -1,0 +1,23 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="mysite.polls.models.Question.DoesNotExist" />
+          <option value="mysite.polls.models.Question.objects" />
+          <option value="mysite.polls.models.Choice.DoesNotExist" />
+          <option value="mysite.news.models.Category.objects" />
+          <option value="mysite.news.models.News.objects" />
+          <option value="course_django.hr.models.Position.objects" />
+          <option value="course.hr.models.Position.objects" />
+          <option value="course_django.hr.models.Company.objects" />
+          <option value="hr.models.Position.objects" />
+          <option value="hr.models.Company.objects" />
+          <option value="django_course.hr.models.Position.objects" />
+          <option value="django_course.hr.models.Company.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
