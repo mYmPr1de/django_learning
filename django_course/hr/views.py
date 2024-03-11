@@ -21,6 +21,7 @@ class EmployeeListView(ListView):
     model = Employee
     template_name = 'employee_list.html'
     context_object_name = 'employees'
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -30,9 +31,19 @@ class EmployeeListView(ListView):
             queryset = queryset.filter(
                 Q(first_name__icontains=search) |
                 Q(last_name__icontains=search) |
-                Q(position__title__icontains=search),
+                Q(position__title__icontains=search) |
+                Q(phone_number__icontains=search)
             )
         return queryset
+
+
+class EmployeesDetailView(DetailView):
+    model = Employee
+    template_name = 'employee_profile.html'
+    context_object_name = 'employee'
+
+    def test_func(self):
+        return user_is_superadmin(self.request.user)
 
 
 class EmployeeCreateView(UserPassesTestMixin, CreateView):

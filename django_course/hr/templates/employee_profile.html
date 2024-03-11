@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ employee.first_name }} {{ employee.last_name }} - Profile
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ employee.first_name }} {{ employee.last_name }}</h1>
+    <p>Position: {{ employee.position.title }}</p>
+    <p>Phone number: {{ employee.phone_number }}</p>
+    <!-- Дополнительная информация о сотруднике -->
+    {% if employee.user %}
+        <p>Email: {{ employee.user.email }}</p>
+        <p>Ім'я користувача: {{ employee.user.username }}</p>
+    {% endif %}
+    
+    <!-- Ссылки на редактирование и удаление сотрудника -->
+    {% if request.user.is_superuser %}
+        <a href="{% url 'employee_update' pk=employee.pk %}" class="btn btn-primary">Редагувати</a>
+        <a href="{% url 'employee_delete' pk=employee.pk %}" class="btn btn-danger">Видалити</a>
+    {% endif %}
+{% endblock content %}
